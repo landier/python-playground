@@ -1,9 +1,7 @@
 init:
 	virtualenv -p python3 env
-	. env/bin/activate
-	pip install -r requirements.txt
+	env/bin/python -m pip install -r requirements.txt
 
 build:
-	. env/bin/activate
-	python setup.py sdist
-	pex -r $(pip freeze) myapp -o myapp.pex -e 'myapp.app' -f dist -v
+	env/bin/python setup.py sdist
+	env/bin/pex myapp -o myapp.pex -e 'myapp.app' -f dist -v
